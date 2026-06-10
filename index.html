@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>Panel Giros | Una Línea Perfecta</title>
+<title>Panel Giros | DONSOL Sin Comisión</title>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -26,7 +26,7 @@ body {
   margin: auto;
 }
 
-/* PANEL DE CONTROL - TODO EN UNA SOLA LÍNEA */
+/* PANEL DE CONTROL */
 .panel {
   background: #111c31;
   padding: 12px;
@@ -35,7 +35,7 @@ body {
   border: 1px solid #1f3a5f;
 }
 
-/* FILA 1: Empresa + Operación + Botón Ajustes - UNA SOLA LÍNEA */
+/* FILA 1: Empresa + Operación + Botón */
 .top-row {
   display: flex;
   gap: 8px;
@@ -120,7 +120,7 @@ body {
   padding: 0 6px;
 }
 
-/* FILA 2: DEPOSITAR + RECIBE - UNA SOLA LÍNEA */
+/* FILA 2: DEPOSITAR + RECIBE */
 .monto-row {
   display: flex;
   gap: 10px;
@@ -162,7 +162,7 @@ body {
   font-size: 0.7rem;
 }
 
-/* BOTONES - UNA SOLA LÍNEA */
+/* BOTONES */
 .btn-group {
   display: flex;
   gap: 8px;
@@ -198,7 +198,7 @@ button:active {
 }
 
 /* ============================================= */
-/* TARJETA PRINCIPAL - COMPACTA PARA MÓVIL */
+/* TARJETA PRINCIPAL */
 /* ============================================= */
 .tarjeta {
   border-radius: 0px;
@@ -384,7 +384,7 @@ button:active {
   padding-top: 8px;
 }
 
-/* Pantallas muy pequeñas - ajuste fino */
+/* Pantallas muy pequeñas */
 @media (max-width: 480px) {
   .top-row {
     gap: 5px;
@@ -427,7 +427,6 @@ button:active {
 
 <div class="container">
 
-  <!-- PANEL DE CONTROL - TODO EN LÍNEAS ÚNICAS -->
   <div class="panel">
     <!-- Línea 1: Empresa + Operación + Ajustes -->
     <div class="top-row">
@@ -435,15 +434,15 @@ button:active {
         <label>EMPRESA</label>
         <select id="empresa">
           <option value="donsol">DONSOL</option>
-          <option value="chaskys">CHASKYS</option>
-          <option value="pacena">PACEÑA</option>
+          <option value="chaskys">CHASKYS GIROS</option>
+          <option value="pacena">LA PACEÑA</option>
         </select>
       </div>
       <div class="field">
         <label>OPERACIÓN</label>
         <select id="operacion">
-          <option value="bs_soles">Bs→Soles</option>
-          <option value="soles_bs">Soles→Bs</option>
+          <option value="bs_soles">Bs → Soles</option>
+          <option value="soles_bs">Soles → Bs</option>
         </select>
       </div>
       <button class="btn-toggle" id="btnToggleAjustes">⚙️</button>
@@ -459,7 +458,7 @@ button:active {
       </div>
     </div>
 
-    <!-- Línea 2: DEPOSITAR + RECIBE - UNA SOLA LÍNEA -->
+    <!-- Línea 2: DEPOSITAR + RECIBE -->
     <div class="monto-row">
       <div class="monto-field">
         <label>DEPOSITAR</label>
@@ -525,12 +524,12 @@ button:active {
 </div>
 
 <script>
-// ==================== CÓDIGO COMPLETO ====================
+// ==================== CÓDIGO - DONSOL SIN COMISIÓN ====================
 const empresa = document.getElementById("empresa");
 const operacion = document.getElementById("operacion");
 const tcBs = document.getElementById("tcBs");
 const tcSb = document.getElementById("tcSb");
-const comision = document.getElementById("comision");
+const comisionInput = document.getElementById("comision");
 const ajuste = document.getElementById("ajuste");
 const depositarInput = document.getElementById("depositar");
 const recibeInput = document.getElementById("recibe");
@@ -549,6 +548,13 @@ function f(n) {
   return Number(n).toFixed(2);
 }
 
+// Obtener comisión efectiva según empresa (DONSOL = 0%)
+function getComisionEfectiva() {
+  let emp = empresa.value;
+  if (emp === "donsol") return 0;
+  return parseFloat(comisionInput.value || 0) / 100;
+}
+
 function calcularDesdeDepositar() {
   let emp = empresa.value;
   let op = operacion.value;
@@ -557,7 +563,7 @@ function calcularDesdeDepositar() {
     ? parseFloat(tcBs.value || 0)
     : parseFloat(tcSb.value || 0);
   
-  let com = parseFloat(comision.value || 0) / 100;
+  let com = getComisionEfectiva();
   let aj = parseFloat(ajuste.value || 0);
   
   if (emp === "donsol") {
@@ -568,12 +574,14 @@ function calcularDesdeDepositar() {
   let resultado = 0;
   
   if (emp === "donsol") {
+    // DONSOL: sin comisión
     if (op === "bs_soles") {
       resultado = depositoVal / tc;
     } else {
       resultado = depositoVal * tc;
     }
   } else {
+    // CHASKYS y PACEÑA: con comisión
     if (op === "bs_soles") {
       let bsBase = depositoVal / (1 + com);
       resultado = bsBase / tc;
@@ -594,7 +602,7 @@ function calcularDesdeRecibe() {
     ? parseFloat(tcBs.value || 0)
     : parseFloat(tcSb.value || 0);
   
-  let com = parseFloat(comision.value || 0) / 100;
+  let com = getComisionEfectiva();
   let aj = parseFloat(ajuste.value || 0);
   
   if (emp === "donsol") {
@@ -605,12 +613,14 @@ function calcularDesdeRecibe() {
   let resultado = 0;
   
   if (emp === "donsol") {
+    // DONSOL: sin comisión
     if (op === "bs_soles") {
       resultado = recibeVal * tc;
     } else {
       resultado = recibeVal / tc;
     }
   } else {
+    // CHASKYS y PACEÑA: con comisión
     if (op === "bs_soles") {
       let bsBase = recibeVal * tc;
       resultado = bsBase + (bsBase * com);
@@ -645,7 +655,7 @@ function actualizarTodo() {
     ? parseFloat(tcBs.value || 0)
     : parseFloat(tcSb.value || 0);
   
-  let com = parseFloat(comision.value || 0) / 100;
+  let com = getComisionEfectiva();
   let aj = parseFloat(ajuste.value || 0);
   
   if (emp === "donsol") {
@@ -675,7 +685,7 @@ function actualizarTodo() {
   if (emp === "donsol") {
     encabezado.classList.add("donsol");
     tituloEmpresa.innerHTML = "CAMBIOS DONSOL";
-    filaComision.style.display = "flex";
+    filaComision.style.display = "none";
     textoRecibe.innerHTML = "RECIBE";
   } else if (emp === "chaskys") {
     encabezado.classList.add("chaskys");
@@ -691,7 +701,13 @@ function actualizarTodo() {
   
   operacionTexto.innerHTML = op === "bs_soles" ? "BOLIVIANOS → SOLES" : "SOLES → BOLIVIANOS";
   tipoVista.innerHTML = f(tc);
-  comisionVista.innerHTML = (com * 100) + "%";
+  
+  // Mostrar comisión solo si no es DONSOL
+  if (emp === "donsol") {
+    comisionVista.innerHTML = "";
+  } else {
+    comisionVista.innerHTML = (parseFloat(comisionInput.value || 0)) + "%";
+  }
   
   const montoMostrar = (depositarInput.value === "" || depositarInput.value === null) ? "0.00" : f(parseFloat(depositarInput.value) || 0);
   const recibeMostrar = (recibeInput.value === "" || recibeInput.value === null) ? "0.00" : f(parseFloat(recibeInput.value) || 0);
@@ -746,7 +762,7 @@ operacion.addEventListener("change", () => {
   actualizarTodo();
 });
 
-[tcBs, tcSb, comision, ajuste].forEach(input => {
+[tcBs, tcSb, comisionInput, ajuste].forEach(input => {
   input.addEventListener("input", () => {
     if (ultimoCampo === "depositar" && depositarInput.value !== "") {
       calcularDesdeDepositar();
@@ -802,7 +818,7 @@ tcSb.addEventListener("input", () => localStorage.setItem("tcSb", tcSb.value));
 ajuste.addEventListener("input", () => localStorage.setItem("ajuste", ajuste.value));
 empresa.addEventListener("change", () => localStorage.setItem("empresa", empresa.value));
 operacion.addEventListener("change", () => localStorage.setItem("operacion", operacion.value));
-comision.addEventListener("input", () => localStorage.setItem("comision", comision.value));
+comisionInput.addEventListener("input", () => localStorage.setItem("comision", comisionInput.value));
 
 window.addEventListener("load", () => {
   tcBs.value = localStorage.getItem("tcBs") || tcBs.value;
@@ -810,7 +826,7 @@ window.addEventListener("load", () => {
   ajuste.value = localStorage.getItem("ajuste") || ajuste.value;
   empresa.value = localStorage.getItem("empresa") || empresa.value;
   operacion.value = localStorage.getItem("operacion") || operacion.value;
-  comision.value = localStorage.getItem("comision") || comision.value;
+  comisionInput.value = localStorage.getItem("comision") || comisionInput.value;
   depositarInput.value = "";
   recibeInput.value = "";
   actualizarTodo();
