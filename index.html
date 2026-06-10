@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Panel Giros | Estilo Limpio - Bidireccional</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Panel Giros | Una Línea Perfecta</title>
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -18,95 +18,85 @@ body {
   background: #0a0f1a;
   font-family: 'Roboto', sans-serif;
   color: white;
-  padding: 20px;
+  padding: 10px;
 }
 
 .container {
-  max-width: 750px;
+  max-width: 100%;
   margin: auto;
 }
 
-/* PANEL DE CONTROL */
+/* PANEL DE CONTROL - TODO EN UNA SOLA LÍNEA */
 .panel {
   background: #111c31;
-  padding: 20px;
+  padding: 12px;
   border-radius: 0px;
-  margin-bottom: 25px;
+  margin-bottom: 16px;
   border: 1px solid #1f3a5f;
 }
 
-/* FILA SUPERIOR */
-.top-bar {
+/* FILA 1: Empresa + Operación + Botón Ajustes - UNA SOLA LÍNEA */
+.top-row {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   align-items: flex-end;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+  margin-bottom: 12px;
+  flex-wrap: nowrap;
 }
 
-.top-bar .field {
+.top-row .field {
   flex: 1;
-  min-width: 140px;
-}
-
-.field {
-  margin-bottom: 0;
+  min-width: 0;
 }
 
 .field label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 1px;
+  font-size: 0.6rem;
+  letter-spacing: 0.5px;
   color: #9bb5d4;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .field select, .field input {
   width: 100%;
-  height: 48px;
+  height: 38px;
   border: none;
   border-radius: 0px;
-  padding: 0 15px;
+  padding: 0 8px;
   background: #1c2b48;
   color: #f5c542;
   font-weight: 600;
   font-family: 'Oswald', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.75rem;
 }
 
 .btn-toggle {
   background: linear-gradient(135deg, #2a3a55, #1f2e48);
   border: 1px solid #f5b400;
   color: #f5b400;
-  height: 48px;
-  padding: 0 20px;
+  height: 38px;
+  padding: 0 12px;
   border-radius: 0px;
   font-weight: 800;
   font-family: 'Oswald', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.7rem;
   cursor: pointer;
-  transition: all 0.2s;
+  white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
-.btn-toggle:hover {
-  background: #f5b400;
-  color: #111;
-  border-color: #f5b400;
-}
-
-/* PANEL DE AJUSTES OCULTABLE */
+/* PANEL DE AJUSTES */
 .ajustes-panel {
   background: #0f1825;
   border-radius: 0px;
-  padding: 16px 18px;
-  margin: 16px 0 12px 0;
+  padding: 10px;
+  margin: 8px 0 10px 0;
   border: 1px solid #2a3a55;
-  transition: all 0.3s ease;
 }
 
 .ajustes-panel.hidden {
@@ -115,86 +105,80 @@ body {
 
 .ajustes-grid {
   display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
 
 .ajustes-grid .field {
   flex: 1;
-  min-width: 120px;
+  min-width: 0;
 }
 
 .ajustes-grid .field input {
-  height: 44px;
-  font-size: 0.9rem;
-  border-radius: 0px;
+  height: 34px;
+  font-size: 0.7rem;
+  padding: 0 6px;
 }
 
-/* FILA DEPOSITAR / RECIBE - LIMPIA */
+/* FILA 2: DEPOSITAR + RECIBE - UNA SOLA LÍNEA */
 .monto-row {
   display: flex;
-  gap: 14px;
-  margin: 16px 0 20px 0;
-  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 12px 0;
+  flex-wrap: nowrap;
 }
 
 .monto-field {
   flex: 1;
+  min-width: 0;
 }
 
 .monto-field label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 1px;
+  font-size: 0.6rem;
+  letter-spacing: 0.5px;
   color: #9bb5d4;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .monto-field input {
   width: 100%;
-  height: 52px;
+  height: 42px;
   border: 1px solid #2a3a55;
   border-radius: 0px;
-  padding: 0 15px;
+  padding: 0 8px;
   background: #1c2b48;
   color: #f5c542;
   font-weight: 700;
   font-family: 'Oswald', sans-serif;
-  font-size: 1.1rem;
-  transition: all 0.2s;
-}
-
-.monto-field input:focus {
-  background: #253a5a;
-  border-color: #f5b400;
+  font-size: 0.85rem;
 }
 
 .monto-field input::placeholder {
   color: #5a6e8a;
-  font-weight: 500;
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 
-/* BOTONES */
+/* BOTONES - UNA SOLA LÍNEA */
 .btn-group {
   display: flex;
-  gap: 12px;
-  margin-top: 10px;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: nowrap;
 }
 
 button {
-  height: 52px;
+  height: 40px;
   border: none;
   border-radius: 0px;
   font-weight: 800;
   font-family: 'Oswald', sans-serif;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: transform 0.1s, filter 0.2s;
   flex: 1;
 }
 
@@ -214,28 +198,22 @@ button:active {
 }
 
 /* ============================================= */
-/* TARJETA PRINCIPAL - ESQUINAS RECTAS */
+/* TARJETA PRINCIPAL - COMPACTA PARA MÓVIL */
 /* ============================================= */
 .tarjeta {
   border-radius: 0px;
   overflow: hidden;
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   background: #0f1622;
 }
 
-.tarjeta:hover {
-  transform: translateY(-3px);
-}
-
-/* ENCABEZADOS */
 .encabezado {
-  padding: 22px 18px;
+  padding: 12px 10px;
   text-align: center;
 }
 
 .donsol {
-  background: linear-gradient(135deg, #1a1200, #0d0800, #1a0e00);
+  background: linear-gradient(135deg, #1a1200, #0d0800);
   color: #f0c84a;
   border-bottom: 1px solid #c9a84c;
 }
@@ -247,58 +225,49 @@ button:active {
 }
 
 .pacena {
-  background: linear-gradient(135deg, #6a0f0f, #3a0505, #5a0a0a);
+  background: linear-gradient(135deg, #6a0f0f, #3a0505);
   border-bottom: 2px solid #ff6666;
   color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .tituloEmpresa {
   font-family: 'Oswald', sans-serif;
-  font-size: 32px;
+  font-size: 1.3rem;
   font-weight: 800;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  letter-spacing: 1px;
   line-height: 1.2;
   color: inherit;
 }
 
 .operacion {
-  margin-top: 10px;
-  font-size: 15px;
+  margin-top: 5px;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 2px;
-  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
   background: rgba(0,0,0,0.35);
   display: inline-block;
-  padding: 5px 20px;
-  border-radius: 0px;
-  backdrop-filter: blur(2px);
+  padding: 3px 10px;
   color: inherit;
 }
 
-/* CONTENIDO */
 .contenido {
   background: #0f1622;
-  padding: 24px 22px;
+  padding: 14px 12px;
 }
 
-/* TABLA ESTILO LIMPIO */
 .infoBox {
   background: rgba(255, 255, 255, 0.03);
-  border-radius: 0px;
-  padding: 12px 18px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(255, 215, 0, 0.15);
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.1);
 }
 
 .infoRow {
   display: flex;
   justify-content: space-between;
-  padding: 12px 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.9rem;
-  font-weight: 500;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.7rem;
 }
 
 .infoRow:last-child {
@@ -309,44 +278,36 @@ button:active {
   color: #b9c3dc;
   text-transform: uppercase;
   font-weight: 600;
-  letter-spacing: 1px;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
 }
 
 .infoRow strong {
   color: #f3cd81;
   font-family: 'Oswald', sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
 }
 
-/* Para La Paceña */
 .tarjeta.pacena .infoRow strong {
   color: #ffccaa;
 }
 .tarjeta.pacena .infoBox {
-  border-color: rgba(255, 100, 100, 0.4);
+  border-color: rgba(255, 100, 100, 0.3);
   background: rgba(80, 20, 20, 0.2);
 }
-.tarjeta.pacena .infoRow span {
-  color: #ffc0c0;
-}
 
-/* SECCIONES */
 .seccionTitulo {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
   font-weight: 700;
-  letter-spacing: 2.5px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   color: #9ca9c7;
-  margin-top: 20px;
-  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .seccionTitulo::before,
@@ -360,91 +321,105 @@ button:active {
 
 .montoSec {
   text-align: center;
-  font-size: 28px;
+  font-size: 1.2rem;
   font-weight: 700;
   font-family: 'Oswald', sans-serif;
   color: #f3cd81;
-  letter-spacing: 1px;
 }
 
 .montoPrin {
   text-align: center;
-  font-size: 52px;
+  font-size: 1.8rem;
   font-weight: 800;
   font-family: 'Oswald', sans-serif;
   color: #f5b400;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  letter-spacing: 2px;
-  margin: 8px 0;
+  margin: 4px 0;
 }
 
 .moneda {
   text-align: center;
-  font-size: 18px;
+  font-size: 0.7rem;
   font-weight: 700;
   color: #d4b86a;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
 }
 
-/* ESTILO LA PACEÑA */
 .pacenaLinea {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: baseline;
-  gap: 12px;
-  font-size: 18px;
+  gap: 6px;
+  font-size: 0.7rem;
   font-weight: 800;
-  margin: 25px 0 15px;
+  margin: 15px 0 10px;
   background: rgba(100, 20, 20, 0.7);
-  padding: 20px 16px;
-  border-radius: 0px;
+  padding: 10px 8px;
   border: 1px solid #ff7777;
-  box-shadow: 0 0 15px rgba(255, 80, 80, 0.2);
 }
 
 .pacenaLinea span {
   color: #ffe0e0;
   font-weight: 600;
-  letter-spacing: 1px;
+  font-size: 0.65rem;
 }
 
 .pacenaLinea strong {
-  font-size: 32px;
+  font-size: 1rem;
   font-family: 'Oswald', sans-serif;
   color: #ffffff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
   background: rgba(0,0,0,0.2);
-  padding: 4px 12px;
-  border-radius: 0px;
+  padding: 2px 6px;
 }
 
-/* FOOTER DE VALIDEZ */
 .validityFooter {
-  margin-top: 22px;
+  margin-top: 12px;
   text-align: center;
-  font-size: 0.65rem;
-  letter-spacing: 1.5px;
+  font-size: 0.5rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: #6c7b9e;
-  border-top: 1px solid rgba(255,215,0,0.15);
-  padding-top: 16px;
+  border-top: 1px solid rgba(255,215,0,0.1);
+  padding-top: 8px;
 }
 
-.tarjeta.pacena .validityFooter {
-  color: #ccaa99;
-  border-top-color: rgba(255,100,100,0.3);
-}
-
-/* RESPONSIVE */
-@media (max-width: 650px) {
-  .container { max-width: 100%; }
-  .top-bar { flex-direction: column; }
-  .ajustes-grid { flex-direction: column; }
-  .monto-row { flex-direction: column; }
-  .montoPrin { font-size: 38px; }
-  .pacenaLinea strong { font-size: 24px; }
+/* Pantallas muy pequeñas - ajuste fino */
+@media (max-width: 480px) {
+  .top-row {
+    gap: 5px;
+  }
+  .field select, .field input {
+    font-size: 0.65rem;
+    padding: 0 5px;
+    height: 34px;
+  }
+  .btn-toggle {
+    font-size: 0.6rem;
+    padding: 0 8px;
+    height: 34px;
+  }
+  .ajustes-grid {
+    gap: 5px;
+  }
+  .ajustes-grid .field input {
+    height: 30px;
+    font-size: 0.6rem;
+  }
+  .monto-field input {
+    height: 38px;
+    font-size: 0.75rem;
+  }
+  button {
+    height: 36px;
+    font-size: 0.7rem;
+  }
+  .tituloEmpresa {
+    font-size: 1.1rem;
+  }
+  .montoPrin {
+    font-size: 1.5rem;
+  }
 }
 </style>
 </head>
@@ -452,66 +427,54 @@ button:active {
 
 <div class="container">
 
-  <!-- PANEL DE CONTROL -->
+  <!-- PANEL DE CONTROL - TODO EN LÍNEAS ÚNICAS -->
   <div class="panel">
-    <!-- Fila superior -->
-    <div class="top-bar">
+    <!-- Línea 1: Empresa + Operación + Ajustes -->
+    <div class="top-row">
       <div class="field">
         <label>EMPRESA</label>
         <select id="empresa">
-          <option value="donsol">CAMBIOS DONSOL</option>
-          <option value="chaskys">CHASKYS GIROS</option>
-          <option value="pacena">TRANSPORTADORA LA PACEÑA</option>
+          <option value="donsol">DONSOL</option>
+          <option value="chaskys">CHASKYS</option>
+          <option value="pacena">PACEÑA</option>
         </select>
       </div>
       <div class="field">
         <label>OPERACIÓN</label>
         <select id="operacion">
-          <option value="bs_soles">Bolivianos → Soles</option>
-          <option value="soles_bs">Soles → Bolivianos</option>
+          <option value="bs_soles">Bs→Soles</option>
+          <option value="soles_bs">Soles→Bs</option>
         </select>
       </div>
-      <button class="btn-toggle" id="btnToggleAjustes">⚙️ AJUSTES</button>
+      <button class="btn-toggle" id="btnToggleAjustes">⚙️</button>
     </div>
 
-    <!-- PANEL OCULTABLE DE AJUSTES -->
+    <!-- Panel de ajustes ocultable -->
     <div id="ajustesPanel" class="ajustes-panel hidden">
       <div class="ajustes-grid">
-        <div class="field">
-          <label>BS → SOLES</label>
-          <input id="tcBs" value="2.92" step="0.01" type="number">
-        </div>
-        <div class="field">
-          <label>SOLES → BS</label>
-          <input id="tcSb" value="2.75" step="0.01" type="number">
-        </div>
-        <div class="field">
-          <label>COMISIÓN (%)</label>
-          <input id="comision" value="3" step="0.1" type="number">
-        </div>
-        <div class="field">
-          <label>AJUSTE DONSOL</label>
-          <input id="ajuste" value="0.03" step="0.01" type="number">
-        </div>
+        <div class="field"><label>BS→SOL</label><input id="tcBs" value="2.92" step="0.01" type="number"></div>
+        <div class="field"><label>SOL→BS</label><input id="tcSb" value="2.75" step="0.01" type="number"></div>
+        <div class="field"><label>COMISIÓN</label><input id="comision" value="3" step="0.1" type="number"></div>
+        <div class="field"><label>AJUSTE</label><input id="ajuste" value="0.03" step="0.01" type="number"></div>
       </div>
     </div>
 
-    <!-- DEPOSITAR y RECIBE - Ambos funcionales -->
+    <!-- Línea 2: DEPOSITAR + RECIBE - UNA SOLA LÍNEA -->
     <div class="monto-row">
       <div class="monto-field">
         <label>DEPOSITAR</label>
-        <input id="depositar" placeholder="Ingrese monto" type="number">
+        <input id="depositar" placeholder="0.00" type="number">
       </div>
       <div class="monto-field">
         <label>RECIBE</label>
-        <input id="recibe" placeholder="Ingrese monto" type="number">
+        <input id="recibe" placeholder="0.00" type="number">
       </div>
     </div>
 
-    <!-- Botones -->
+    <!-- Línea 3: Botones -->
     <div class="btn-group">
       <button id="btnLimpiar">LIMPIAR</button>
-      <button id="btnGuardar">📸 GUARDAR IMAGEN</button>
+      <button id="btnGuardar">📸 GUARDAR</button>
     </div>
   </div>
 
@@ -537,7 +500,6 @@ button:active {
       <div id="modoNormal">
         <div class="seccionTitulo">USTED ENVÍA</div>
         <div id="enviaVista" class="montoSec">0.00</div>
-
         <div class="seccionTitulo" id="textoRecibe">RECIBE</div>
         <div id="recibeVista" class="montoPrin">0.00</div>
         <div id="monedaVista" class="moneda">SOLES</div>
@@ -563,7 +525,7 @@ button:active {
 </div>
 
 <script>
-// ==================== CÓDIGO COMPLETO BIDIRECCIONAL ====================
+// ==================== CÓDIGO COMPLETO ====================
 const empresa = document.getElementById("empresa");
 const operacion = document.getElementById("operacion");
 const tcBs = document.getElementById("tcBs");
@@ -577,10 +539,9 @@ const ajustesPanel = document.getElementById("ajustesPanel");
 
 let ultimoCampo = "depositar";
 
-// Toggle
 btnToggle.addEventListener("click", () => {
   ajustesPanel.classList.toggle("hidden");
-  btnToggle.innerHTML = ajustesPanel.classList.contains("hidden") ? "⚙️ AJUSTES" : "🔽 OCULTAR AJUSTES";
+  btnToggle.innerHTML = ajustesPanel.classList.contains("hidden") ? "⚙️" : "🔽";
 });
 
 function f(n) {
@@ -622,7 +583,7 @@ function calcularDesdeDepositar() {
     }
   }
   
-  recibeInput.value = f(resultado);
+  recibeInput.value = resultado !== 0 ? f(resultado) : "";
 }
 
 function calcularDesdeRecibe() {
@@ -659,25 +620,24 @@ function calcularDesdeRecibe() {
     }
   }
   
-  depositarInput.value = f(resultado);
+  depositarInput.value = resultado !== 0 ? f(resultado) : "";
 }
 
 function actualizarTodo() {
   if (ultimoCampo === "depositar") {
-    if (depositarInput.value !== "") {
+    if (depositarInput.value !== "" && depositarInput.value !== null) {
       calcularDesdeDepositar();
     } else {
       recibeInput.value = "";
     }
   } else {
-    if (recibeInput.value !== "") {
+    if (recibeInput.value !== "" && recibeInput.value !== null) {
       calcularDesdeRecibe();
     } else {
       depositarInput.value = "";
     }
   }
   
-  // Actualizar vista de la tarjeta
   let emp = empresa.value;
   let op = operacion.value;
   
@@ -733,8 +693,8 @@ function actualizarTodo() {
   tipoVista.innerHTML = f(tc);
   comisionVista.innerHTML = (com * 100) + "%";
   
-  const montoMostrar = depositarInput.value === "" ? "0.00" : f(parseFloat(depositarInput.value) || 0);
-  const recibeMostrar = recibeInput.value === "" ? "0.00" : f(parseFloat(recibeInput.value) || 0);
+  const montoMostrar = (depositarInput.value === "" || depositarInput.value === null) ? "0.00" : f(parseFloat(depositarInput.value) || 0);
+  const recibeMostrar = (recibeInput.value === "" || recibeInput.value === null) ? "0.00" : f(parseFloat(recibeInput.value) || 0);
   
   enviaVista.innerHTML = montoMostrar;
   recibeVista.innerHTML = recibeMostrar;
@@ -758,7 +718,6 @@ function actualizarTodo() {
   }
 }
 
-// Eventos
 depositarInput.addEventListener("input", () => {
   ultimoCampo = "depositar";
   actualizarTodo();
@@ -770,57 +729,32 @@ recibeInput.addEventListener("input", () => {
 });
 
 empresa.addEventListener("change", () => {
-  if (ultimoCampo === "depositar") {
+  if (ultimoCampo === "depositar" && depositarInput.value !== "") {
     calcularDesdeDepositar();
-  } else {
+  } else if (ultimoCampo === "recibe" && recibeInput.value !== "") {
     calcularDesdeRecibe();
   }
   actualizarTodo();
 });
 
 operacion.addEventListener("change", () => {
-  if (ultimoCampo === "depositar") {
+  if (ultimoCampo === "depositar" && depositarInput.value !== "") {
     calcularDesdeDepositar();
-  } else {
+  } else if (ultimoCampo === "recibe" && recibeInput.value !== "") {
     calcularDesdeRecibe();
   }
   actualizarTodo();
 });
 
-tcBs.addEventListener("input", () => {
-  if (ultimoCampo === "depositar") {
-    calcularDesdeDepositar();
-  } else {
-    calcularDesdeRecibe();
-  }
-  actualizarTodo();
-});
-
-tcSb.addEventListener("input", () => {
-  if (ultimoCampo === "depositar") {
-    calcularDesdeDepositar();
-  } else {
-    calcularDesdeRecibe();
-  }
-  actualizarTodo();
-});
-
-comision.addEventListener("input", () => {
-  if (ultimoCampo === "depositar") {
-    calcularDesdeDepositar();
-  } else {
-    calcularDesdeRecibe();
-  }
-  actualizarTodo();
-});
-
-ajuste.addEventListener("input", () => {
-  if (ultimoCampo === "depositar") {
-    calcularDesdeDepositar();
-  } else {
-    calcularDesdeRecibe();
-  }
-  actualizarTodo();
+[tcBs, tcSb, comision, ajuste].forEach(input => {
+  input.addEventListener("input", () => {
+    if (ultimoCampo === "depositar" && depositarInput.value !== "") {
+      calcularDesdeDepositar();
+    } else if (ultimoCampo === "recibe" && recibeInput.value !== "") {
+      calcularDesdeRecibe();
+    }
+    actualizarTodo();
+  });
 });
 
 document.getElementById("btnLimpiar").addEventListener("click", () => {
@@ -830,17 +764,12 @@ document.getElementById("btnLimpiar").addEventListener("click", () => {
   actualizarTodo();
 });
 
-// Guardar imagen
 function guardarImagen() {
   const tarjetaElem = document.getElementById("tarjeta");
-  tarjetaElem.style.transform = "translateZ(0)";
-  
   html2canvas(tarjetaElem, {
-    scale: 2.5,
+    scale: 2,
     backgroundColor: "#0f1622",
-    logging: false,
-    useCORS: false,
-    allowTaint: false
+    logging: false
   }).then(canvas => {
     const link = document.createElement("a");
     const empresaActual = empresa.value;
@@ -855,9 +784,9 @@ function guardarImagen() {
     
     const btn = document.getElementById("btnGuardar");
     const originalText = btn.innerHTML;
-    btn.innerHTML = "✓ IMAGEN GUARDADA";
+    btn.innerHTML = "✓ GUARDADO";
     setTimeout(() => {
-      btn.innerHTML = originalText;
+      btn.innerHTML = "📸 GUARDAR";
     }, 1500);
   }).catch(error => {
     console.error("Error:", error);
